@@ -1,0 +1,27 @@
+{
+    "source": {
+        "include": [
+            "server.js",
+            "routes",
+            "models"
+        ],
+        "includePattern": ".+\\.js$",
+        "excludePattern": "(node_modules/|docs)"
+    },
+    "plugins": [
+        "plugins/markdown"
+    ],
+    "opts": {
+        "destination": "./docs/",
+        "recurse": true,
+        "readme": "./README.md"
+    },
+    "templates": {
+        "cleverLinks": true,
+        "monospaceLinks": true,
+        "default": {
+            "outputSourceFiles": true,
+            "includeDate": true
+        }
+    }
+}

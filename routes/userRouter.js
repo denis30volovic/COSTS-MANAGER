@@ -201,4 +201,46 @@ router.put('/users/:id', async (req, res) => {
     }
 });
 
+/**
+ * @route POST /api/users
+ * @description Create a new user
+ * @body {Object} userData - User data
+ * @body {number} userData.id - Unique identifier for the user
+ * @body {string} userData.first_name - User's first name
+ * @body {string} userData.last_name - User's last name
+ * @body {string} userData.birthday - User's birthday
+ * @body {string} userData.marital_status - User's marital status
+ * @returns {Object} JSON object containing the newly created user
+ */
+router.post('/users', async (req, res) => {
+    try {
+        const { id, first_name, last_name, birthday, marital_status } = req.body;
+
+        // Validate required fields
+        if (!id || !first_name || !last_name || !birthday || !marital_status) {
+            return res.status(400).json({ error: 'Missing required fields' });
+        }
+
+        // Check if user with this ID already exists
+        const existingUser = await User.findOne({ id });
+        if (existingUser) {
+            return res.status(400).json({ error: 'User with this ID already exists' });
+        }
+
+        // Create new user
+        const user = new User({
+            id,
+            first_name,
+            last_name,
+            birthday,
+            marital_status
+        });
+
+        await user.save();
+        res.status(201).json(user);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
 module.exports = router; 

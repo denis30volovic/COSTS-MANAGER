@@ -37,7 +37,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 /**
  * @description Define API routes
  */
-app.use('/api', require('./routes/userRouter'));
+app.use('/api', require('./routes/UserRouter'));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

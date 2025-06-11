@@ -20,7 +20,14 @@ const path = require('path');
 require('./models/Users');
 require('./models/Costs');
 
+/**
+ * @description Load environment variables from .env file
+ */
 dotenv.config();
+
+/**
+ * @description Connect to MongoDB database
+ */
 connectDB();
 
 /**
@@ -45,5 +52,13 @@ app.use('/api', require('./routes/UserRouter'));
  */
 app.use('/docs', express.static(path.join(__dirname, 'docs')));
 
+/**
+ * @description Server port configuration
+ * @type {number}
+ */
 const PORT = process.env.PORT || 5000;
+
+/**
+ * @description Start the server and listen for incoming connections
+ */
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

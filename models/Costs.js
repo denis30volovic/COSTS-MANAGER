@@ -54,7 +54,13 @@ costSchema.post('save', async function () {
     await User.updateTotalCosts(this.userid);
 });
 
-// Update user's total_costs after removing a cost
+/**
+ * @description Post-remove hook to update the user's total_costs after removing a cost
+ * @function
+ * @async
+ * @returns {Promise<void>}
+ * @throws {Error} If the update operation fails
+ */
 costSchema.post('remove', async function () {
     const User = mongoose.model('User');
     await User.updateTotalCosts(this.userid);

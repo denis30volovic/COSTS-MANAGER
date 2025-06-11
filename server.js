@@ -10,6 +10,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const connectDB = require('./config/Db');
 const dotenv = require('dotenv');
+const path = require('path');
 
 /**
  * @description Import models to ensure they are registered with Mongoose
@@ -38,6 +39,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
  * @description Define API routes
  */
 app.use('/api', require('./routes/userRouter'));
+
+/**
+ * @description Serve API documentation
+ */
+app.use('/docs', express.static(path.join(__dirname, 'docs')));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

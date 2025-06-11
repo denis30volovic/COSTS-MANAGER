@@ -17,7 +17,6 @@ const Cost = require('../models/Cost');
  */
 router.get('/about', (req, res) => {
     try {
-        // This should be replaced with actual team members' information
         const teamMembers = [
             {
                 first_name: "Denis",
@@ -38,11 +37,13 @@ router.get('/about', (req, res) => {
  * @route GET /api/users/:id
  * @description Get details of a specific user
  * @param {string} id - User ID
- * @returns {Object} JSON object containing user details including first_name, last_name, id, and total costs
+ * @returns {Object} JSON object containing user details including first_name, last_name, id, and total_costs
+ * @throws {Error} If user is not found or if there's a server error
  */
 router.get('/users/:id', async (req, res) => {
     try {
         const user = await User.findOne({ id: req.params.id });
+
         if (!user) {
             return res.status(404).json({ error: 'User not found' });
         }
@@ -159,43 +160,6 @@ router.post('/add', async (req, res) => {
 
         await cost.save();
         res.status(201).json(cost);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-});
-
-/**
- * @route PUT /api/users/:id
- * @description Update user details
- * @param {string} id - User ID
- * @body {Object} userData - Updated user data
- * @returns {Object} JSON object containing updated user details
- */
-router.put('/users/:id', async (req, res) => {
-    try {
-        const { first_name, last_name, birthday, marital_status } = req.body;
-        const user = await User.findOne({ id: req.params.id });
-
-        if (!user) {
-            return res.status(404).json({ error: 'User not found' });
-        }
-
-        // Update only provided fields
-        if (first_name) user.first_name = first_name;
-        if (last_name) user.last_name = last_name;
-        if (birthday) user.birthday = birthday;
-        if (marital_status) user.marital_status = marital_status;
-
-        await user.save();
-
-        res.json({
-            id: user.id,
-            first_name: user.first_name,
-            last_name: user.last_name,
-            birthday: user.birthday,
-            marital_status: user.marital_status,
-            total: user.total_costs
-        });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

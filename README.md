@@ -44,4 +44,4 @@ npm install
 npm start
 ```
 
-The server will run on port 3000 by default. 
+The server will run on port 5000 by default. 

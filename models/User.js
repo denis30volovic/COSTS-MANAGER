@@ -47,7 +47,12 @@ const userSchema = new mongoose.Schema({
     }
 });
 
-// Update total_costs whenever a cost is added or modified
+/**
+ * @description Updates the total_costs field for a user by aggregating all their costs
+ * @param {Number} userId - The ID of the user to update
+ * @returns {Promise<void>}
+ * @throws {Error} If the update operation fails
+ */
 userSchema.statics.updateTotalCosts = async function (userId) {
     const Cost = mongoose.model('Cost');
     const total = await Cost.aggregate([

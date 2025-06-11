@@ -13,8 +13,8 @@ testing getting the report - 1
 ------------------------------
 url=http://localhost:5000//api/report/?id=123123&year=2025&month=6
 data.status_code=200
-b'{"userid":123123,"year":2025,"month":6,"costs":[{"food":[{"sum":8,"description":"milk 9","day":7},{"sum":8,"description":"milk 9","day":7}]},{"health":[]},{"housing":[]},{"sport":[]},{"education":[]}]}'
-data.text={"userid":123123,"year":2025,"month":6,"costs":[{"food":[{"sum":8,"description":"milk 9","day":7},{"sum":8,"description":"milk 9","day":7}]},{"health":[]},{"housing":[]},{"sport":[]},{"education":[]}]}
+b'{"userid":123123,"year":2025,"month":6,"costs":[{"food":[]},{"health":[]},{"housing":[]},{"sport":[]},{"education":[]}]}'
+data.text={"userid":123123,"year":2025,"month":6,"costs":[{"food":[]},{"health":[]},{"housing":[]},{"sport":[]},{"education":[]}]}
 
 
 
@@ -22,14 +22,14 @@ testing adding cost item
 ----------------------------------
 url=http://localhost:5000//api/add/
 data.status_code=201
-b'{"description":"milk 9","category":"food","userid":123123,"sum":8,"date":"2025-06-07T14:37:29.813Z","_id":"68444ea9e3a0b6b6807eb787","__v":0}'
+b'{"description":"milk 9","category":"food","userid":123123,"sum":8,"date":"2025-06-11T16:50:11.477Z","_id":"6849b3c3b8e5add5479f08dc","__v":0}'
 
 
 testing getting the report - 2
 ------------------------------
 url=http://localhost:5000//api/report/?id=123123&year=2025&month=6
 data.status_code=200
-b'{"userid":123123,"year":2025,"month":6,"costs":[{"food":[{"sum":8,"description":"milk 9","day":7},{"sum":8,"description":"milk 9","day":7},{"sum":8,"description":"milk 9","day":7}]},{"health":[]},{"housing":[]},{"sport":[]},{"education":[]}]}'
-data.text={"userid":123123,"year":2025,"month":6,"costs":[{"food":[{"sum":8,"description":"milk 9","day":7},{"sum":8,"description":"milk 9","day":7},{"sum":8,"description":"milk 9","day":7}]},{"health":[]},{"housing":[]},{"sport":[]},{"education":[]}]}
+b'{"userid":123123,"year":2025,"month":6,"costs":[{"food":[{"sum":8,"description":"milk 9","day":11}]},{"health":[]},{"housing":[]},{"sport":[]},{"education":[]}]}'
+data.text={"userid":123123,"year":2025,"month":6,"costs":[{"food":[{"sum":8,"description":"milk 9","day":11}]},{"health":[]},{"housing":[]},{"sport":[]},{"education":[]}]}
 
 

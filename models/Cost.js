@@ -42,7 +42,13 @@ const costSchema = new mongoose.Schema({
     }
 });
 
-// Update user's total_costs after saving a new cost
+/**
+ * @description Post-save hook to update the user's total_costs after saving a new cost
+ * @function
+ * @async
+ * @returns {Promise<void>}
+ * @throws {Error} If the update operation fails
+ */
 costSchema.post('save', async function () {
     const User = mongoose.model('User');
     await User.updateTotalCosts(this.userid);

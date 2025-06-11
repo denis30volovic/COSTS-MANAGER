@@ -4,12 +4,8 @@
 # Dependencies
 node_modules/
 
-# Generated documentation
-docs/
-
 # Logs
 *.log
 npm-debug.log*
 
-# The docs for the assignment (used to easily generate the jsdoc)
-Assignment_Instructions.txt
+

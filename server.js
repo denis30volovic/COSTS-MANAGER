@@ -17,8 +17,8 @@ const path = require('path');
  * @requires ./models/User
  * @requires ./models/Cost
  */
-require('./models/User');
-require('./models/Cost');
+require('./models/Users');
+require('./models/Costs');
 
 dotenv.config();
 connectDB();
@@ -38,7 +38,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 /**
  * @description Define API routes
  */
-app.use('/api', require('./routes/userRouter'));
+app.use('/api', require('./routes/UserRouter'));
 
 /**
  * @description Serve API documentation

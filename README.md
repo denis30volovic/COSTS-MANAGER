@@ -77,7 +77,7 @@ The server will run on port 5000 by default.
 
 The API documentation is available at:
 - Local: `http://localhost:5000/docs`
-- Production: `https://your-railway-app-url/docs`
+- Production: `https://costs-manager-production.up.railway.app/docs`
 
 To generate documentation:
 ```bash
